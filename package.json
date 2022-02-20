@@ -25,17 +25,17 @@
     "build:iife": "esbuild src/index.ts --bundle --sourcemap --minify --format=iife --global-name=ffnParser --outfile=lib/index.iife.min.js"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.20",
-    "@types/jsdom": "^16.2.6",
-    "esbuild": "^0.8.46",
+    "@types/jest": "^27.4.0",
+    "@types/jsdom": "^16.2.14",
+    "esbuild": "^0.14.23",
     "jest": "^26.6.3",
-    "jsdom": "^16.2.2",
+    "jsdom": "^16.7.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.2.1",
+    "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "ts-jest": "^26.5.0",
-    "tslib": "^2.1.0",
-    "typescript": "^4.1.3"
+    "ts-jest": "^26.5.6",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.5"
   },
   "jest": {
     "preset": "ts-jest",
