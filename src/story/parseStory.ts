@@ -166,6 +166,34 @@ export function parseTags(
     result.universes = [tagsArray.shift()!.trim()];
   }
 
+  while (result.universes.length > 2) {
+    // Heuristic: Stories can only have two universes, but at least one of them has an ampersand and got split
+    // It's not possible in this view to determine where the correct split is, so this heuristic is used.
+    const shortestIdx = result.universes.reduce(
+      (suIdx, universe, idx, arr) =>
+        arr[suIdx].length < universe.length ? suIdx : idx,
+      0
+    );
+    if (shortestIdx === 0) {
+      const [removed] = result.universes.splice(1, 1);
+      result.universes[0] += ` & ${removed}`;
+    } else if (shortestIdx === result.universes.length - 1) {
+      const removed = result.universes.pop();
+      result.universes[result.universes.length - 1] += ` & ${removed}`;
+    } else {
+      if (
+        result.universes[shortestIdx + 1].length <
+        result.universes[shortestIdx - 1].length
+      ) {
+        const [removed] = result.universes.splice(shortestIdx + 1, 1);
+        result.universes[shortestIdx] += ` & ${removed}`;
+      } else {
+        const [removed] = result.universes.splice(shortestIdx, 1);
+        result.universes[shortestIdx - 1] += ` & ${removed}`;
+      }
+    }
+  }
+
   const tempElement = createTemplate();
   tempElement.innerHTML = tagsArray[0]
     .trim()

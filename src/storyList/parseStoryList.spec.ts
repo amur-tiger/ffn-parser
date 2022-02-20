@@ -1804,4 +1804,34 @@ describe("parseStoryList", function () {
       },
     ]);
   });
+
+  it("should handle universes with ampersand", async function () {
+    const fragment = await loadTestCase("10-ampersand-universe.html");
+    const parsed = await parseStoryList(fragment);
+
+    expect(parsed).toHaveLength(25);
+    expect(parsed?.[7]).toStrictEqual({
+      author: {
+        id: 226550,
+        name: "Ruskbyte",
+      },
+      characters: [["Harry P."], ["Mandy"]],
+      description:
+        "Harry is about to start his first year at Hogwarts. With him comes his cynical, somewhat unofficial, not to mention bent on world domination girlfriend Mandy. And they're also bringing their mutual best friend i.e.: indentured servant the Grim Reaper.",
+      favorites: 4166,
+      follows: 2892,
+      genre: ["Humor", "Parody"],
+      id: 2666277,
+      imageUrl: "/image/4597662/75/",
+      language: "English",
+      published: new Date("2005-11-19T07:55:33.000Z"),
+      rating: "T",
+      reviews: 1019,
+      status: "Incomplete",
+      title: "Something Grim This Way Comes",
+      universes: ["Harry Potter", "Grim Adventures of Billy & Mandy"],
+      updated: new Date("2011-01-01T10:08:36.000Z"),
+      words: 68629,
+    });
+  });
 });

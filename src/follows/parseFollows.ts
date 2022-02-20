@@ -1,24 +1,20 @@
-import { Follow } from "./model";
+import {Follow} from "./model";
 
-export interface FollowsParseOptions {}
+export interface FollowsParseOptions {
+}
 
 export default async function parseFollows(
   document?: Document | DocumentFragment,
   options?: Partial<FollowsParseOptions>
 ): Promise<Follow[] | undefined> {
   const doc = document ?? window.document;
-  const opts: FollowsParseOptions = {
-    ...options,
-  };
 
   const table = doc.querySelector("form #gui_table1i");
   if (!table) {
     return undefined;
   }
 
-  const rows = table.querySelectorAll(
-    "tbody tr"
-  ) as NodeListOf<HTMLTableRowElement>;
+  const rows = table.querySelectorAll("tbody tr");
 
   return Array.from(rows)
     .filter(
