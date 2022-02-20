@@ -106,9 +106,10 @@ export default async function parseStory(
     resultMeta.description = descriptionElement.textContent.trim();
   }
   resultMeta.chapters = chapterElement
-    ? parseChapters(chapterElement)
+    ? parseChapters(chapterElement, resultMeta.id)
     : [
         {
+          storyId: resultMeta.id,
           id: 1,
           title:
             (titleElement.textContent && titleElement.textContent.trim()) ||
@@ -316,7 +317,10 @@ export function parseCharacters(tag: string): string[][] {
   return result;
 }
 
-export function parseChapters(selectElement: ParentNode): Chapter[] {
+export function parseChapters(
+  selectElement: ParentNode,
+  storyId: number
+): Chapter[] {
   const result: Chapter[] = [];
 
   for (let i = 0; i < selectElement.children.length; i++) {
@@ -327,13 +331,14 @@ export function parseChapters(selectElement: ParentNode): Chapter[] {
 
     let title = option.textContent;
     if (title && /^\d+\. .+/.test(title)) {
-      title = title.substr(title.indexOf(".") + 2);
+      title = title.substring(title.indexOf(".") + 2);
     }
     if (!title) {
       title = `Chapter ${i + 1}`;
     }
 
     result.push({
+      storyId,
       id: +(option.getAttribute("value") ?? 0),
       title,
     });
