@@ -1,5 +1,5 @@
-import { readFile } from "fs/promises";
-import { join } from "path";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { JSDOM } from "jsdom";
 
 export async function loadResource(name: string): Promise<string> {

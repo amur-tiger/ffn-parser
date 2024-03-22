@@ -1,4 +1,5 @@
-import { Chapter, Story } from "./model";
+import type Story from "./model/story";
+import type Chapter from "./model/chapter";
 
 export const DEFAULT_GENRES = [
   "General",
@@ -33,7 +34,7 @@ export interface StoryParseOptions {
 
 export default async function parseStory(
   document?: Document | DocumentFragment,
-  options?: Partial<StoryParseOptions>
+  options?: Partial<StoryParseOptions>,
 ): Promise<Story | undefined> {
   const doc = document ?? window.document;
   const opts: StoryParseOptions = {
@@ -79,7 +80,7 @@ export default async function parseStory(
 
   if (breadcrumbElement) {
     const universeLink = breadcrumbElement.querySelector(
-      "span :last-child"
+      "span :last-child",
     ) as HTMLAnchorElement;
     if (!universeLink.textContent) {
       resultMeta.universes = [];
@@ -123,7 +124,7 @@ export default async function parseStory(
 export function parseTags(
   tagsElement: Element,
   genres: string[],
-  createTemplate: () => HTMLTemplateElement
+  createTemplate: () => HTMLTemplateElement,
 ): Story {
   const result: Story = {
     id: 0,
@@ -173,7 +174,7 @@ export function parseTags(
     const shortestIdx = result.universes.reduce(
       (suIdx, universe, idx, arr) =>
         arr[suIdx].length < universe.length ? suIdx : idx,
-      0
+      0,
     );
     if (shortestIdx === 0) {
       const [removed] = result.universes.splice(1, 1);
@@ -265,7 +266,7 @@ export function parseTags(
         const child = tempTimeElement.content.firstElementChild;
         if (child && child.hasAttribute("data-xutime")) {
           result[tagName] = new Date(
-            +child.getAttribute("data-xutime")! * 1000
+            +child.getAttribute("data-xutime")! * 1000,
           );
         }
         break;
@@ -319,7 +320,7 @@ export function parseCharacters(tag: string): string[][] {
 
 export function parseChapters(
   selectElement: ParentNode,
-  storyId: number
+  storyId: number,
 ): Chapter[] {
   const result: Chapter[] = [];
 

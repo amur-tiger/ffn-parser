@@ -1,11 +1,10 @@
-import {Follow} from "./model";
+import type Follow from "./model/follow";
 
-export interface FollowsParseOptions {
-}
+export interface FollowsParseOptions {}
 
 export default async function parseFollows(
   document?: Document | DocumentFragment,
-  options?: Partial<FollowsParseOptions>
+  options?: Partial<FollowsParseOptions>,
 ): Promise<Follow[] | undefined> {
   const doc = document ?? window.document;
 
@@ -18,7 +17,7 @@ export default async function parseFollows(
 
   return Array.from(rows)
     .filter(
-      (row) => row.children.length === 6 && row.querySelector("td") != null
+      (row) => row.children.length === 6 && row.querySelector("td") != null,
     )
     .map((row) => {
       const storyAnchor = row.children[0]

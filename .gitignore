@@ -1,5 +1,5 @@
 # Output folder
-/lib/
+/dist/
 
 # Created by https://www.gitignore.io/api/osx,node,code,linux,windows,intellij+all
 # Edit at https://www.gitignore.io/?templates=osx,node,code,linux,windows,intellij+all

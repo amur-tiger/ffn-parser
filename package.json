@@ -1,6 +1,6 @@
 {
   "name": "ffn-parser",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A collection of functions to help parse pages off of FanFiction.net",
   "license": "MIT",
   "author": "Arne 'TigeR' Linck",
@@ -9,36 +9,35 @@
     "fanfiction",
     "parser"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "types": "lib/index.d.ts",
+  "type": "module",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "types": "dist/mjs/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/mjs/index.js",
+      "types": "./dist/mjs/index.d.ts"
+    }
+  },
   "scripts": {
     "clean": "rimraf lib",
     "format": "prettier --write src/**/*.ts",
-    "test": "run-p test:*",
-    "test:unit": "jest",
-    "test:types": "tsc --noEmit",
+    "test": "vitest src",
+    "types": "tsc --noEmit",
     "prebuild": "run-s clean",
     "build": "run-p build:*",
-    "build:esm": "esbuild src/index.ts --bundle --sourcemap --format=esm --outfile=lib/index.esm.js",
-    "build:commonjs": "tsc --module commonjs",
-    "build:iife": "esbuild src/index.ts --bundle --sourcemap --minify --format=iife --global-name=ffnParser --outfile=lib/index.iife.min.js"
+    "build:esm": "tsc --project tsconfig.json",
+    "build:commonjs": "tsc --project tsconfig.cjs.json"
   },
   "devDependencies": {
-    "@types/jest": "^27.4.0",
-    "@types/jsdom": "^16.2.14",
-    "esbuild": "^0.14.23",
-    "jest": "^26.6.3",
-    "jsdom": "^16.7.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^26.5.6",
-    "tslib": "^2.3.1",
-    "typescript": "^4.5.5"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "rootDir": "src"
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.11.30",
+    "jsdom": "^24.0.0",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.4.3",
+    "vitest": "^1.4.0"
   }
 }
