@@ -1,5 +1,5 @@
-import { StoryListStory } from "./model";
-import { DEFAULT_GENRES, parseTags } from "../story";
+import type StoryListStory from "./model/storyListStory";
+import { DEFAULT_GENRES, parseTags } from "../story/parseStory";
 
 export interface StoryListParseOptions {
   genres: string[];
@@ -8,7 +8,7 @@ export interface StoryListParseOptions {
 
 export default async function parseStoryList(
   document?: Document | DocumentFragment,
-  options?: Partial<StoryListParseOptions>
+  options?: Partial<StoryListParseOptions>,
 ): Promise<StoryListStory[] | undefined> {
   const doc = document ?? window.document;
   const opts: StoryListParseOptions = {
@@ -29,7 +29,7 @@ export default async function parseStoryList(
     universes.push(links.item(1).textContent!);
   } else {
     const container = doc.getElementById(
-      "content_wrapper_inner"
+      "content_wrapper_inner",
     ) as HTMLDivElement;
     let text = "";
     for (const node of Array.from(container.childNodes)) {
@@ -41,7 +41,7 @@ export default async function parseStoryList(
       ...text
         .split(/\n+/g)
         .map((u) => u.trim())
-        .filter((u) => u.length > 0 && u !== "Crossovers")
+        .filter((u) => u.length > 0 && u !== "Crossovers"),
     );
   }
 
@@ -53,7 +53,7 @@ export default async function parseStoryList(
   return Array.from(rows).map((row: HTMLDivElement) => {
     const storyAnchor = row.firstElementChild as HTMLAnchorElement;
     const authorAnchor = row.querySelector(
-      'a[href^="/u/"]'
+      'a[href^="/u/"]',
     ) as HTMLAnchorElement;
     const descriptionElement = row.querySelector(".z-indent") as HTMLDivElement;
     const tagsElement = row.querySelector(".z-padtop2") as HTMLDivElement;

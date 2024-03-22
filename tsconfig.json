@@ -4,13 +4,21 @@
     "declarationMap": true,
     "esModuleInterop": true,
     "strict": true,
-    "lib": ["ES2020", "DOM"],
-    "module": "ES6",
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "module": "ESNext",
     "moduleResolution": "Node",
-    "outDir": "lib",
+    "outDir": "dist/mjs",
+    "skipLibCheck": true,
     "sourceMap": true,
     "target": "ES2015"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

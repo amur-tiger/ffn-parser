@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import parseStory from "./parseStory";
 import { loadTestCase } from "../testUtils";
 
