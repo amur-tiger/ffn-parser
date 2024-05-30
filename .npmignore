@@ -1,8 +1,10 @@
-node_modules
-
 .github
 .idea
-
-src/resources/test-cases
-src/**/*.spec.ts
-lib/**/*.spec.*
+node_modules
+resources
+src
+.editorconfig
+.gitattributes
+.gitignore
+tsconfig.json
+vitest.config.ts

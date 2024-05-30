@@ -5,15 +5,15 @@
     "esModuleInterop": true,
     "strict": true,
     "lib": [
-      "ES2020",
+      "ESNext",
       "DOM"
     ],
     "module": "ESNext",
     "moduleResolution": "Node",
-    "outDir": "dist/mjs",
+    "outDir": "dist",
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "ES2015"
+    "target": "ESNext"
   },
   "include": [
     "src/**/*"
