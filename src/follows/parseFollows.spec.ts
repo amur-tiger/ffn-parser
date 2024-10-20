@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { loadTestCase } from "../testUtils";
-import parseFollows from "./parseFollows";
+import { loadTestCase } from "../testUtils.js";
+import parseFollows from "./parseFollows.js";
 
 describe("parseFollows", function () {
   it("should parse main page", async function () {

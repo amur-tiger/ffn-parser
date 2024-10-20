@@ -1,5 +1,5 @@
-import Chapter from "./chapter";
-import User from "./user";
+import Chapter from "./chapter.js";
+import User from "./user.js";
 
 type Character = string;
 type Pairing = Character[];
