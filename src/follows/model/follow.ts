@@ -1,4 +1,4 @@
-import UserRef from "./userRef";
+import UserRef from "./userRef.js";
 
 export default interface Follow {
   id: number;

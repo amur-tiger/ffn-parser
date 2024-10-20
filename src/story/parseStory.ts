@@ -1,5 +1,5 @@
-import type Story from "./model/story";
-import type Chapter from "./model/chapter";
+import type Story from "./model/story.js";
+import type Chapter from "./model/chapter.js";
 
 export const DEFAULT_GENRES = [
   "General",

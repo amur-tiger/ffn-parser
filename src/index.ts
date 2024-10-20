@@ -1,23 +1,23 @@
-export type { default as Follow } from "./follows/model/follow";
-export type { default as UserRef } from "./follows/model/userRef";
+export type { default as Follow } from "./follows/model/follow.js";
+export type { default as UserRef } from "./follows/model/userRef.js";
 export {
   default as parseFollows,
   type FollowsParseOptions,
-} from "./follows/parseFollows";
+} from "./follows/parseFollows.js";
 
-export type { default as Chapter } from "./story/model/chapter";
-export type { default as Story } from "./story/model/story";
-export type { default as User } from "./story/model/user";
+export type { default as Chapter } from "./story/model/chapter.js";
+export type { default as Story } from "./story/model/story.js";
+export type { default as User } from "./story/model/user.js";
 export {
   default as parseStory,
   type StoryParseOptions,
   parseChapters,
   parseCharacters,
   parseTags,
-} from "./story/parseStory";
+} from "./story/parseStory.js";
 
-export type { default as StoryListStory } from "./storyList/model/storyListStory";
+export type { default as StoryListStory } from "./storyList/model/storyListStory.js";
 export {
   default as parseStoryList,
   type StoryListParseOptions,
-} from "./storyList/parseStoryList";
+} from "./storyList/parseStoryList.js";

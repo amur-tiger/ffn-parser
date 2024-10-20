@@ -1,4 +1,4 @@
-import type Follow from "./model/follow";
+import type Follow from "./model/follow.js";
 
 export interface FollowsParseOptions {}
 

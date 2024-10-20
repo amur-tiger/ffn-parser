@@ -1,5 +1,5 @@
-import type StoryListStory from "./model/storyListStory";
-import { DEFAULT_GENRES, parseTags } from "../story/parseStory";
+import type StoryListStory from "./model/storyListStory.js";
+import { DEFAULT_GENRES, parseTags } from "../story/parseStory.js";
 
 export interface StoryListParseOptions {
   genres: string[];
