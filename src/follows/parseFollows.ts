@@ -8,7 +8,7 @@ export default async function parseFollows(
 ): Promise<Follow[] | undefined> {
   const doc = document ?? window.document;
 
-  const table = doc.querySelector("form #gui_table1i");
+  const table = doc.querySelector("form #gui_table1");
   if (!table) {
     return undefined;
   }
